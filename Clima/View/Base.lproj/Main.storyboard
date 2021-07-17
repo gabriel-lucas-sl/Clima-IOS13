@@ -97,10 +97,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-bh-8Fw">
-                                        <rect key="frame" x="134" y="355.5" width="240" height="462.5"/>
+                                        <rect key="frame" x="0.0" y="355.5" width="374" height="462.5"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="CmM-8s-OXY">
+                                                <rect key="frame" x="168.5" y="213" width="37" height="37"/>
+                                                <color key="color" name="weatherColor"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="CmM-8s-OXY" firstAttribute="centerY" secondItem="0ti-bh-8Fw" secondAttribute="centerY" id="8zy-vs-cCt"/>
+                                            <constraint firstItem="CmM-8s-OXY" firstAttribute="centerX" secondItem="0ti-bh-8Fw" secondAttribute="centerX" id="KPr-Wf-7Kg"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0ti-bh-8Fw" secondAttribute="trailing" id="DF8-O0-qgP"/>
+                                    <constraint firstItem="0ti-bh-8Fw" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="ILT-pR-6nM"/>
                                     <constraint firstAttribute="trailing" secondItem="Tgv-vV-Mot" secondAttribute="trailing" id="Xxe-YD-sFY"/>
                                     <constraint firstItem="Tgv-vV-Mot" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="zMA-9O-gQ7"/>
                                 </constraints>
@@ -123,6 +135,7 @@
                         <outlet property="cityLabel" destination="CWP-r8-Jsy" id="8cQ-3l-ufV"/>
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="searchTextField" destination="2eh-wL-W34" id="tt4-xV-D74"/>
+                        <outlet property="spinner" destination="CmM-8s-OXY" id="Mg6-uT-NwE"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,7 @@
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
@@ -24,12 +25,16 @@
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
-        
+    
+        spinner.hidesWhenStopped = true
+        spinner.stopAnimating()
+
         weatherManager.delegate = self
         searchTextField.delegate = self
     }
     
     @IBAction func currentLocationPressed(_ sender: UIButton) {
+        spinner.startAnimating()
         locationManager.requestLocation()
     }
     
@@ -61,6 +66,7 @@
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchTextField.text {
+            spinner.startAnimating()
             weatherManager.fetchWeather(cityName: city)
         }
         searchTextField.text = ""
@@ -76,6 +82,7 @@
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
+            self.spinner.stopAnimating()
         }
     }
     
@@ -88,6 +95,9 @@
  
  extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        spinner.startAnimating()
+        
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
             let lat = Int(location.coordinate.latitude)
