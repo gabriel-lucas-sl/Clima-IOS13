@@ -9,11 +9,12 @@
 import Foundation
 
 protocol WeatherManagerDelegate {
-    func didUpdateWeather(weather: WeatherModel)
+    func didUpdateWeather(_ weatherManager: WeatherManager, _ weather: WeatherModel)
+    func didFailedWithError(_ error: Error)
 }
 
 struct WeatherManager {
-    let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?appid=51d81621da9cdd1723acd2af529ee5cd&units=metric&q=London"
+    let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?appid=51d81621da9cdd1723acd2af529ee5cd&units=metric"
     
     var delegate: WeatherManagerDelegate?
     
@@ -32,15 +33,15 @@ struct WeatherManager {
             // 3. Give the session a task
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailedWithError(error!)
                     return
                 }
                 
                 if let safeData = data {
-                    if let weather = self.parseJSON(weatherData: safeData) {
+                    if let weather = self.parseJSON(safeData) {
 //                        let weatherVC = WeatherViewController()
 //                        weatherVC.didUpdateWeather(weather)
-                        delegate?.didUpdateWeather(weather: weather)
+                        self.delegate?.didUpdateWeather(self, weather)
                     }
                 }
             }
@@ -50,7 +51,7 @@ struct WeatherManager {
         }
     }
     
-    func parseJSON(weatherData: Data) -> WeatherModel? {
+    func parseJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
@@ -62,7 +63,7 @@ struct WeatherManager {
             return weather
             
         } catch {
-            print(error.localizedDescription, error)
+            self.delegate?.didFailedWithError(error)
             return nil
         }
     }

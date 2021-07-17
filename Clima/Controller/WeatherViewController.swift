@@ -51,8 +51,17 @@ import UIKit
         searchTextField.text = ""
     }
     
-    func didUpdateWeather(weather: WeatherModel) {
-        print(weather.cityName)
+    func didUpdateWeather(_ weatherManager: WeatherManager, _ weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName) 
+            self.cityLabel.text = weather.cityName
+        }
+        
+    }
+    
+    func didFailedWithError(_ error: Error) {
+        print(error.localizedDescription, "\n", error)
     }
 }
 
