@@ -1,6 +1,6 @@
 #  Clima
 
-This is a project that I developed in the section 13 of Angela Yu's IOS development <a href="https://www.udemy.com/course/ios-13-app-development-bootcamp/" target="_blank">course</a>. I was introduced to the Application Programming Interfaces (APIs) to grab live data from the internet. By the end of this module, I will be able to enable the dark-mode and change the app interface accordinaly. Besides being able to check the weather for the current location based on the GPS data from the Iphone as well as by searching for a city manually.
+This is a project that I developed in the section 13 of Angela Yu's IOS development <a href="https://www.udemy.com/course/ios-13-app-development-bootcamp/" target="_blank">course</a>. I was introduced to the Application Programming Interfaces (APIs) to grab live data from the internet. By the end of this module, I have been able to enable the dark-mode and change the app interface accordingly. Besides being able to check the weather for the current location based on the GPS data from the Iphone as well as by searching for a city manually.
 
 ## What I built
 
