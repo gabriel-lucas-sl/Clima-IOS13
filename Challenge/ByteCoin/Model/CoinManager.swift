@@ -19,11 +19,14 @@ struct CoinManager {
     let apiKey = ""
     
     var delegate: CoinManagerDelegate?
+    var currency: String?
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
 
-    func getCoinPrice(for currency: String) {
+    mutating func getCoinPrice(for currency: String) {
+        self.currency = currency
         let url = baseURL + "/\(currency)/?apikey=\(apiKey)"
+        
         performRequest(with: url)
     }
     
@@ -59,6 +62,10 @@ struct CoinManager {
             self.delegate?.didFailedWithError(error)
             return nil
         }
+    }
+    
+    func getCurrency() -> String {
+        return currency!
     }
     
 }
