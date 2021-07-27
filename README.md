@@ -6,6 +6,11 @@ This is a project that I developed in the section 13 of Angela Yu's IOS developm
 
 https://user-images.githubusercontent.com/61299646/126051111-84737fe5-93f5-4844-9940-eddad288485f.mp4
 
+### Challenge
+
+https://user-images.githubusercontent.com/61299646/127240894-ba82cf21-9653-4b07-a1f8-2ea85b9959e4.mp4
+
+
 ## What I learned
 
 * How to create a dark-mode enabled app.
